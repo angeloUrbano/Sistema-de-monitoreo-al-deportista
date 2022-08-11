@@ -13,8 +13,8 @@ require("conn.php");
 	$consulta = "INSERT INTO `pitcheo`(`tipolanza`, `nrolanza`, `cod`, `velocidad`, `status`, `realizadopor`) VALUES ('" .$fech. "','" .$nom. "','" .$cedu. "', '','', '".$ralizado."')";
 	mysqli_query($conn, $consulta);
 	if($consulta){            
-		echo "<span>Guardado Correctamente</span>";
-		echo "<a href='siguienteregistro.php?cod=$cedu&lanza=$nom'>Siguiente $cedu.$nom</a>";
+
+		echo "siguienteregistro.php?cod=$cedu&lanza=$nom";
 	}
 	else
 	{

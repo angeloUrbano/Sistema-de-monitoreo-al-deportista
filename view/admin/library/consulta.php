@@ -23,9 +23,12 @@ if ($result->num_rows > 0) {
                     echo "<td>" . $row['lastname'] . "</td>";
                     echo "<td>" . $row['age'] . "</td>";
                     echo "<td>" . $row['dateofbirth'] . "</td>";
-                    echo "<td><button class='btn btn-danger btn-sm'>ELIMINAR</button></td>";
+                    echo "<td> <button  onclick='eliminarAtleta(" . $row['idatletas'] . ")' class='btn btn-danger btn-sm'>ELIMINAR</button> <button  onclick='editarAtleta(" . $row['idatletas'] . ")' class='btn btn-success btn-sm'>EDITAR</button></td> ";
+                    
                     echo "</tr>";
                 }
+
+               
                 echo "
             </tbody>
     </table>";

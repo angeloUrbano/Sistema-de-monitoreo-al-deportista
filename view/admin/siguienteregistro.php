@@ -101,8 +101,9 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
                                             <?php
                                             $lanza = $_GET['lanza'];
-                                            //echo $lanza;
-                                            if ($lanza == '2') {
+                                            
+                                            $contador =0;
+                                            while ($contador <$lanza) {
                                             ?>
 
                                                 <div class="row g-3">
@@ -134,42 +135,14 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
 
                                                 </div>
-                                                <div class="row g-3">
-                                                    <div class="col-sm-6">
-                                                        <label for="firstName" class="form-label">Atleta Seleccionado</label>
-                                                        <input type="text" name="atleta" id="atleta" class="form-control" autocomplete="off" tabindex="1" required value="<?= $cod; ?>" disabled="disabled">
+                                                
 
-                                                        <div class="invalid-feedback">
-                                                            Valid first name is required.
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <label for="firstName" class="form-label">Velocidad de Lanzamiento</label>
-                                                        <input type="number" id="numero" name="numero" placeholder="Nro" class="form-control" autocomplete="off" tabindex="2" required>
-                                                        <div class="invalid-feedback">
-                                                            Valid first name is required.
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-4">
-                                                        <label for="lastName" class="form-label">Control de Lanzamiento</label>
-                                                        <select class="form-control" name="control" id="control" required>
-                                                            <option value=""></option>
-                                                            <option value="Ball">ball</option>
-                                                            <option value="Stike">Strike</option>
-                                                        </select>
-
-                                                    </div>
-
-
-                                                </div>
+                                            
 
 
 
                                             <?php
-                                            } else {
-                                                echo 'NO!!';
-                                            }
+                                             $contador+=1;  } 
                                             ?>
 
 

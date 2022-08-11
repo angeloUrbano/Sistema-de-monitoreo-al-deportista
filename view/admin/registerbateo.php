@@ -2,6 +2,16 @@
 include('library/conn.php');
 // Se prendio esta mrd :v
 $cod = $_GET['cod'];
+
+
+$consulta_where = "SELECT foto FROM dataprimaryathletes where code= '$cod' ";
+$resultado =  mysqli_query($conn,$consulta_where);
+
+
+while ($fila = mysqli_fetch_array($resultado)) {
+    
+    $foto = $fila["foto"];    
+}
 session_start();
 
 // Validamos que exista una session y ademas que el cargo que exista sea igual a 1 (Administrador)
@@ -44,6 +54,8 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                     url: "library/bateopost.php",
                     data: "atleta=" + cedu + "&numero=" + nom,
                     success: function(resp) {
+                        alert("Su registro se ha realizado con éxito")
+                        window.location.replace(resp); 
                         $('#respuesta').html(resp);
                         Limpiar();
                         Cargar();
@@ -79,10 +91,15 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Reg. Bateo</h1>
+                    
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                         <li class="breadcrumb-item active">Reg. Bateo</li>
+                        
                     </ol>
+                    <img src="library/SoportesAspirantes/<?php echo $foto; ?>" alt="imagen" width="220px" height="150px">
+                    <br>
+                    <br>
                     <div class="card mb-4">
                         <div class="card-body">
 
@@ -101,7 +118,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <label for="firstName" class="form-label">Nro de Lanzamiento</label>
+                                                    <label for="firstName" class="form-label">Nro de Turnos</label>
                                                     <input type="number" id="numero" name="numero" placeholder="Nro" class="form-control" autocomplete="off" tabindex="2" required min="1" max="5">
                                                     <div class="invalid-feedback">
                                                         Valid first name is required.

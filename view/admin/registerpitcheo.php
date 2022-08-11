@@ -2,6 +2,14 @@
 include('library/conn.php');
 // Se prendio esta mrd :v
 $cod = $_GET['cod'];
+$consulta_where = "SELECT foto FROM dataprimaryathletes where code= '$cod' ";
+$resultado =  mysqli_query($conn,$consulta_where);
+
+
+while ($fila = mysqli_fetch_array($resultado)) {
+    
+    $foto = $fila["foto"];    
+}
 session_start();
 
 // Validamos que exista una session y ademas que el cargo que exista sea igual a 1 (Administrador)
@@ -45,7 +53,8 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                     url: "library/pitcheopost.php",
                     data: "atleta=" + cedu + "&numero=" + nom + "&lanza=" + lanza + "&ralizado"+ralizado,
                     success: function(resp) {
-                        $('#respuesta').html(resp);
+                        
+                        window.location.replace(resp); 
                         Limpiar();
                         Cargar();
                     }
@@ -84,6 +93,9 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                         <li class="breadcrumb-item active">Reg. Pitcheo</li>
                     </ol>
+                    <img src="library/SoportesAspirantes/<?php echo $foto; ?>" alt="imagen" width="220px" height="150px">
+                    <br>
+                    <br>
                     <div class="card mb-4">
                         <div class="card-body">
 

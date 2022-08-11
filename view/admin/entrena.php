@@ -2,6 +2,16 @@
 include('library/conn.php');
 $cod = $_GET['cod'];
 $name = $_GET['atleta'];
+
+$consulta_where = "SELECT foto FROM dataprimaryathletes where code= '$cod' ";
+$resultado =  mysqli_query($conn,$consulta_where);
+
+
+while ($fila = mysqli_fetch_array($resultado)) {
+    
+    $foto = $fila["foto"];    
+}
+
 session_start();
 
 // Validamos que exista una session y ademas que el cargo que exista sea igual a 1 (Administrador)
@@ -46,6 +56,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6 mb-4">
+                          <img src="library/SoportesAspirantes/<?php echo $foto; ?>" alt="imagen" width="220px" height="150px">
                                 <h3><b>Atleta :</b> <?= $cod . ' | ' . $name; ?></h3>
                             </div>
                         </div>

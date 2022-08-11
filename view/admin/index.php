@@ -53,6 +53,8 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                             </div>
                         </div>
                         <div class="row" id="myProducts">
+
+                        
                             <?php
                             $sql = "SELECT * FROM dataprimaryathletes";
                             $result = $conn->query($sql);
@@ -64,7 +66,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                                     <div class="card-body">' . $row['name'] . ' - ' . $row['lastname'] . '</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
 
-                                        <a class="small text-white stretched-link" href="entrena.php?cod='.$row['code'].'&atleta='.$row['name'].'">Entrenar</a>
+                                        <a class="small text-white stretched-link" href="entrena.php?cod='.$row['code'].'&atleta='.$row['lastname'].'">Entrenar</a>
 
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>

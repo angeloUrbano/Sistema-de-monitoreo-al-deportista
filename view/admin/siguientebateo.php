@@ -31,16 +31,15 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
         function Registrar() {
             var cedu = $("#atleta").val();
-            var nom = $("#numero").val();
-            var control = $("#control").val();
+            
+            
+            var dato = '<?php echo $cod;?>';
+            alert(dato);
+             var form = $("#empleadoform").serialize() + '&cedula=' + dato;
+            
 
-            var numero2 = $("#numero2").val();
 
-            var ball = $("#ball").val();
-
-            var ralizado = $("#ralizado").val();
-
-            if (cedu == "" || nom == "" || control == "") {
+            if (form == "") {
                 $("#respuesta").html("<span>Por favor completa todos los campos</span>");
             } else {
                 $("#respuesta").html("<img src='loader.gif'><span> Por favor espera un momento</span>");
@@ -48,8 +47,9 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                     type: "POST",
                     dataType: 'html',
                     url: "library/bateopostupdate.php",
-                    data: "atleta=" + cedu + "&numero=" + nom + "&control=" + control + "&ralizado" + ralizado + "&numero2=" + numero2 + "&ball=" + ball,
+                    data: form,
                     success: function(resp) {
+
                         $('#respuesta').html(resp);
                         Limpiar();
                         Cargar();
@@ -86,10 +86,10 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Reg. Pitcheo</h1>
+                    <h1 class="mt-4">Reg. Bateo</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Reg. Pitcheo</li>
+                        <li class="breadcrumb-item active">Reg. Bateo</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
@@ -97,18 +97,23 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                             <div class="signup-form-container">
                                 <div id="container">
                                     <div id="inscribir">
-                                        <form name="empleado" class="needs-validation" onsubmit="return false" action="return false">
+                                        <form name="empleado" id="empleadoform" class="needs-validation" onsubmit="return false" action="return false">
 
                                             <?php
                                             $lanza = $_GET['lanza'];
                                             //echo $lanza;
-                                            if ($lanza == '2') {
+                                            
+                                             
+                                            $contador =0;
+                                            while ($contador <$lanza) {
+                                            
+                                            
                                             ?>
 
-                                                <div class="row g-3">
+                                                <div class="row">
                                                     <div class="col-sm-6">
                                                         <label for="firstName" class="form-label">Atleta Seleccionado</label>
-                                                        <input type="text" name="atleta2" id="atleta2" class="form-control" autocomplete="off" tabindex="1" required value="<?= $cod; ?>" disabled="disabled">
+                                                        <input type="text" name="atleta2[]"  class="form-control" autocomplete="off" tabindex="1" required value="<?= $cod; ?>" disabled="disabled">
 
                                                         <div class="invalid-feedback">
                                                             Valid first name is required.
@@ -118,7 +123,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
                                                     <div class="col-sm-4">
                                                         <label for="lastName" class="form-label">Control de Lanzamiento</label>
-                                                        <select class="form-control" name="ball" id="ball" required>
+                                                        <select class="form-control" name="ball[]"  required>
                                                             <option value=""></option>
                                                             <option value="1">Hit</option>
                                                             <option value="0">Out</option>
@@ -128,35 +133,16 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
 
                                                 </div>
-                                                <div class="row g-3">
-                                                    <div class="col-sm-6">
-                                                        <label for="firstName" class="form-label">Atleta Seleccionado</label>
-                                                        <input type="text" name="atleta" id="atleta" class="form-control" autocomplete="off" tabindex="1" required value="<?= $cod; ?>" disabled="disabled">
-
-                                                        <div class="invalid-feedback">
-                                                            Valid first name is required.
-                                                        </div>
-                                                    </div>
-                                                   
-
-                                                    <div class="col-sm-4">
-                                                        <label for="lastName" class="form-label">Control de Lanzamiento</label>
-                                                        <select class="form-control" name="control" id="control" required>
-                                                            <option value=""></option>
-                                                            <option value="1">Hit</option>
-                                                            <option value="0">Out</option>
-                                                        </select>
-
-                                                    </div>
 
 
-                                                </div>
+                                              
 
 
 
                                             <?php
-                                            } else{
-                                            }
+                                            
+                                            $contador+=1;  } 
+                                            
                                             ?>
 
 
