@@ -1,6 +1,6 @@
 
 
-proyecto freelances hecho con lengueje de programacion php , javascript , ajax , sql , mysql , css , botstrap 
+proyecto freelancers hecho con lengueje de programacion php , javascript , ajax , sql , mysql , css , botstrap 
 
 
 
