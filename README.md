@@ -36,6 +36,10 @@ proyecto freelances hecho con lengueje de programacion php , javascript , ajax ,
 
 ![d5acf167-f0be-4c8c-afbc-4563d065bc8c](https://user-images.githubusercontent.com/49767887/184396988-fe5f3a85-cdd2-47eb-b5db-8f5c53b14f0a.jpg)
 
+![d7f1fe31-3911-4114-8bd6-1b07cc979ef6](https://user-images.githubusercontent.com/49767887/184397753-2c8f2bfd-8bd7-4ce2-a687-19db5b2c1769.jpg)
+
+
+
 ![9af95bee-5a9f-41a9-ab85-401f35d60feb](https://user-images.githubusercontent.com/49767887/184395927-376f2f05-a5df-406f-8492-033a150bc949.jpg)
 
 ![c4bb675c-83b2-446a-90cc-562df043242e](https://user-images.githubusercontent.com/49767887/184396030-b5b5a7b4-91be-4619-9fda-fbebebe56a5f.jpg)
